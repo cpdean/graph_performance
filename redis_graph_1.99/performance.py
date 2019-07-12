@@ -215,7 +215,7 @@ def load_data(c, trips, stops, stop_times):
     load_trips(c, trips)
     load_stop_times(c, stop_times, stops)
 
-def main():
+def main(data_dir, output_dir):
     c = GraphClient('subway')
     trips = open_trans_file(
         os.path.join(data_dir, 'mta/google_transit/trips.txt')
@@ -228,7 +228,7 @@ def main():
     )
 
     start = time.time()
-    main(c, trips, stops, stop_times)
+    load_data(c, trips, stops, stop_times)
     stop = time.time()
     print("time loading data {} ms".format(1000 * (stop - start)))
 
